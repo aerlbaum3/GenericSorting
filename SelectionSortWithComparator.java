@@ -2,14 +2,14 @@ import java.util.Comparator;
 
 public class SelectionSortWithComparator<T> {
 	private T[] arr;
-	private Comparator<? super T> customComparator;
+	private Comparator<T> customComparator;
 	private int comparisons = 0;
+	private int swaps = 0;
 
-	public SelectionSortWithComparator(T[] arr, Comparator<? super T> customComparator) {
+	public SelectionSortWithComparator(T[] arr) {
 		this.arr = arr;
-		this.customComparator = customComparator;
 	}
-	public void performSort(T[] arr) {
+	public void performSort(Comparator<T> customComparator) {
 		int n = arr.length;
 		
 		for(int i = 0; i < n - 1; i++) {
@@ -26,7 +26,7 @@ public class SelectionSortWithComparator<T> {
 			}
 		}
 		//swap the found minimum element
-		
+		swaps++;
 		T temp = arr[minIndex];
 		arr[minIndex] = arr[i];
 		arr[i] = temp;
@@ -34,6 +34,9 @@ public class SelectionSortWithComparator<T> {
 }
 	public int getComparisons() {
 		return comparisons;
+	}
+	public int getSwaps() {
+		return swaps;
 	}
 	
 
