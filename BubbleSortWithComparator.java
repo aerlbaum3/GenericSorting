@@ -17,13 +17,14 @@ public class BubbleSortWithComparator<T> {
 			for(int j = 0; j < n - 1 - i; j++) {
 				comparisons++; // increment the comparison by one each time loop this array
 				//compare the indexes
-				if(customComparator.compare(arr[j], arr[j+1]) > 0);
+				if(customComparator.compare(arr[j], arr[j+1]) > 0) {
 					swaps++;
 					T tempArray = arr[j];
 					arr[j] = arr[j + 1];
 					arr[j + 1] = tempArray;
 				}
 			}
+		}
 		}
 
 	public int getComparisons() {
