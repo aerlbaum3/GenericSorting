@@ -1,3 +1,4 @@
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
@@ -50,21 +51,25 @@ class sortTesting {
 		assertArrayEquals(expected,arr);
 	}
 	@Test 
-	void testBubbleWithCircle() {
-		BubbleSort<Circle> bubbleSort = new BubbleSort<>();
-
-		Circle[] origArray = new Circle[5]; 
-		origArray[1].setRadius(1);
-		origArray[2].setRadius(9);
-		origArray[3].setRadius(5);
-		origArray[4].setRadius(7);
-		origArray[5].setRadius(13);
+	void testBubbleSortWithComparator() {
+		Dress[] bubbleDress = new Dress[4];
+		bubbleDress[0] = new Dress(150.00,2,"midi");
+		bubbleDress[1] = new Dress(100.00,0,"gown");
+		bubbleDress[2] = new Dress(100.00,6,"maxi");
+		bubbleDress[3] = new Dress(100.00,4,"maxi");
 		
-		Integer[] expected = {1,5,7,9,13};
+		BubbleSortWithComparator<Dress> bubbleSort = new BubbleSortWithComparator<Dress>(bubbleDress);
+		DressSizeCompare compareSize = new DressSizeCompare();
+		bubbleSort.performSort(compareSize);
 		
-		bubbleSort.performSort(origArray);
+		Dress[] expected = new Dress[4];
+		expected[0] = new Dress(100.00,0,"gown");
+		expected[1] = new Dress(150.00,2,"midi");
+		expected[2] = new Dress(100.00,4,"maxi");
+		expected[3] = new Dress(100.00,6,"maxi");
 		
-		assertArrayEquals(expected,origArray);
+		assertEquals(Arrays.toString(expected),Arrays.toString(bubbleDress));
+		
 		
 	}
 
