@@ -14,6 +14,7 @@ public class Circle implements  Comparable<Circle>{
 		return radius;
 	}
 	public double getArea() {
+	
 		return Math.PI * radius * radius;
 	}
 	public double getCircumference() {
@@ -22,10 +23,12 @@ public class Circle implements  Comparable<Circle>{
 
 	@Override
 	public int compareTo(Circle other) {
-		return Integer.compare(radius, other.radius);
+		return radius - other.radius;
+	
 	}
 	
 	public String toString() {
 		return "Circle Area: " + getArea();
 	}
+	
 }
